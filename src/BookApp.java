@@ -9,21 +9,21 @@ public class BookApp {
 		ArrayList<Book> bookList1 = new ArrayList<>();
 		ArrayList<Book> bookList2 = new ArrayList<>();
 
-		int count = Validator.getInt(scan, "How many books would you like to Ender? Get it? Aww, stop Wiggin out...");
+//		int count = Validator.getInt(scan, "How many books would you like to Ender? Get it? Aww, stop Wiggin out...");
 
-		while(count > 0) {
-			String BookNum = Validator.getString(scan, "Enter The ISBN 13 Digit Number: ");
-			String bookTitle = Validator.getString(scan, "Enter Book Title: ");
-			String bookAuth = Validator.getString(scan, "Enter Book Author: ");
-			double bookPrice = Validator.getDouble(scan, "Enter book price: ", 0.01, 1000.00);
-			
-			Book addBook = new Book(BookNum, bookTitle, bookAuth, bookPrice);
-			bookList1.add(addBook);
-			
-			count--;
-		}
-		
-		printMenu(bookList1);
+//		while(count > 0) {
+//			String BookNum = Validator.getString(scan, "Enter The ISBN 13 Digit Number: ");
+//			String bookTitle = Validator.getString(scan, "Enter Book Title: ");
+//			String bookAuth = Validator.getString(scan, "Enter Book Author: ");
+//			double bookPrice = Validator.getDouble(scan, "Enter book price: ", 0.01, 1000.00);
+//			
+//			Book addBook = new Book(BookNum, bookTitle, bookAuth, bookPrice);
+//			bookList1.add(addBook);
+//			
+//			count--;
+//		}
+//		
+//		printMenu(bookList1);
 
 		Book b1 = new Book("9780451463", "Changes", "Jim Butcher", 9.99);
 		Book b2 = new Book("978-1500506", "Nice Dragons Finish Last", "Rachael Aaron", 13.99);
@@ -32,10 +32,10 @@ public class BookApp {
 		bookList2.add(b2);
 		bookList2.add(b3);
 
-		UsedBook ub4 = new UsedBook("9780552137", "Damia", "Anne McCaffrey", 1.22, "Good");
-		UsedBook ub5 = new UsedBook("9780547722", "A Wizard of EarthSea", "Ursula K. Le Guin", 6.09, "Acceptable");
-		UsedBook ub6 = new UsedBook("9780765300", "Wizard's First Rule", "Terry Goodkind", 8.09, "Like New");
-		UsedBook ub7 = new UsedBook("97807653424", "Ender's Shadow", "Orson Scott Card", 8.98, "Very Good");
+		Book ub4 = new UsedBook("9780552137", "Damia", "Anne McCaffrey", 1.22, "Good");
+		Book ub5 = new UsedBook("9780547722", "A Wizard of EarthSea", "Ursula K. Le Guin", 6.09, "Acceptable");
+		Book ub6 = new UsedBook("9780765300", "Wizard's First Rule", "Terry Goodkind", 8.09, "Like New");
+		Book ub7 = new UsedBook("97807653424", "Ender's Shadow", "Orson Scott Card", 8.98, "Very Good");
 		bookList2.add(ub4);
 		bookList2.add(ub5);
 		bookList2.add(ub6);
@@ -55,17 +55,24 @@ public class BookApp {
 
 	public static void printMenu2(ArrayList<Book> bookList2) {
 
-		System.out.println(String.format("%-20s %-20s %-25s %-27s %-15s %-15s", "Option", "ISBN", "Title", "Author",
-				"Price", "Condition"));
-		System.out.println(String.format("%-20s %-20s %-25s %-27s %-15s %-15s", "*****", "*****", "*****", "*****",
-				"*****", "*********"));
+		System.out.println(String.format("%-20s %-20s %-25s %-30s %-15s %-15s", 
+									"Option", "ISBN", "Title", "Author", "Price", "Condition"));
+		System.out.println(String.format("%-20s %-20s %-25s %-30s %-15s %-15s",
+									"*****", "*****", "*****", "*****", "*****", "*********"));
 		int count = 1;
 		for (Book b : bookList2) {
 
+			
 			System.out.print(String.format("Option: %-10s", count));
 			System.out.println(b.toString());
 			count++;
-
+			
+			
+//			if(b instanceof UsedBook) {
+//			System.out.print(String.format("Option: %-10s", count));
+//			System.out.println(b.toString());
+//			count++;
+//			}
 		}
 		System.out.println("Enter 0 to Exit");
 		System.out.println();
@@ -81,11 +88,13 @@ public class BookApp {
 				if (input != 0) {
 
 					System.out.println();
-					System.out.println(String.format("%-20s %-20s %-25s %-27s %-15s %-15s", "Option", "ISBN", "Title",
-							"Author", "Price", "Condition"));
-					System.out.println(String.format("%-20s %-20s %-25s %-27s %-15s %-15s", "*****", "*****", "*****",
-							"*****", "*****", "*********"));
-					System.out.println(bookList2.get(input - 1).toString());
+					
+					printMenu2(bookList2);
+//					System.out.println(String.format("%-20s %-20s %-25s %-27s %-15s %-15s", "Option", "ISBN", "Title",
+//							"Author", "Price", "Condition"));
+//					System.out.println(String.format("%-20s %-20s %-25s %-27s %-15s %-15s", "*****", "*****", "*****",
+//							"*****", "*****", "*********"));
+//					System.out.println(bookList2.get(input - 1).toString());
 					System.out.println();
 
 					int purchNum = Validator.getInt(scan,

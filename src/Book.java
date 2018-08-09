@@ -53,7 +53,7 @@ public class Book {
 	}
 	
 	public String toString() {
-		return String.format("%-20s %-25s %-30s $%-15.2f", bookNum, bookTitle, bookAuth, bookPrice);
+		return String.format("%-20s %-25s %-33s $%-15.2f", bookNum, bookTitle, bookAuth, bookPrice);
 	}
 	
 	
